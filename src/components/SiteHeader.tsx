@@ -1,12 +1,13 @@
 import { siteContent } from "@/content/site";
+import { BrandMark } from "@/components/BrandMark";
 
 export function SiteHeader() {
-  const { brand, nav } = siteContent;
+  const { nav } = siteContent;
 
   return (
     <header className="site-header">
-      <a className="brand" href="#top">
-        {brand.name}
+      <a href="#top" aria-label="Bootlabs, zum Seitenanfang">
+        <BrandMark />
       </a>
       <nav aria-label="Hauptnavigation">
         <ul>

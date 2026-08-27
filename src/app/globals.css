@@ -1,19 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #e8eef2;
-  --foreground: #102027;
-  --muted: #4a5b64;
-  --accent: #0b6b5a;
-  --surface: rgba(255, 255, 255, 0.42);
-  --line: rgba(16, 32, 39, 0.12);
-  --hero-glow: radial-gradient(
-      circle at 12% 18%,
-      rgba(11, 107, 90, 0.2),
-      transparent 40%
-    ),
-    radial-gradient(circle at 88% 8%, rgba(36, 84, 120, 0.16), transparent 34%),
-    linear-gradient(155deg, #edf3f6 0%, #e2ebf0 45%, #d7e8e3 100%);
+  --background: #0a0b0d;
+  --foreground: #f4f6f5;
+  --muted: #9aa0ae;
+  --muted-strong: #c4c9d4;
+  --faint: #6e7480;
+  --accent: #7c5cff;
+  --accent-soft: #cfc4ff;
+  --mint: #7cffc4;
+  --surface: #101119;
+  --panel: #0e0f17;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(124, 92, 255, 0.35);
 }
 
 @theme inline {
@@ -21,6 +20,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
 }
 
 * {
@@ -44,33 +44,53 @@ a {
   text-decoration: none;
 }
 
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
 .site-shell {
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
-.site-header,
-.site-footer,
-.hero,
-.section {
-  width: min(1120px, calc(100% - 2.5rem));
+.wrap {
+  width: min(1200px, calc(100% - 2.25rem));
   margin-inline: auto;
 }
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 1.25rem 0;
+  padding: 1rem 0;
+  background: rgba(10, 11, 13, 0.84);
+  backdrop-filter: blur(12px);
 }
 
-.brand {
+.site-header,
+.site-footer {
+  width: min(1200px, calc(100% - 2.25rem));
+  margin-inline: auto;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
   font-family: var(--font-display), "Segoe UI", sans-serif;
-  font-size: clamp(1.5rem, 2.4vw, 2rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.035em;
 }
 
 .site-header nav ul {
@@ -82,7 +102,7 @@ a {
 }
 
 .site-header nav a {
-  color: var(--muted);
+  color: var(--faint);
   font-size: 0.95rem;
 }
 
@@ -92,112 +112,461 @@ a {
 
 .hero {
   position: relative;
-  min-height: calc(100svh - 5.5rem);
-  display: grid;
-  align-content: center;
-  gap: 1.25rem;
-  padding: 3rem 0 4rem;
   isolation: isolate;
+  padding: clamp(2.5rem, 7vh, 5.5rem) 0 3rem;
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  inset: -2rem -1.25rem auto;
-  height: min(70vh, 640px);
-  background: var(--hero-glow);
-  border-radius: 1.5rem;
+  inset: -4rem auto auto -8%;
+  width: min(38rem, 80vw);
+  height: min(38rem, 80vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.28), transparent 68%);
+  filter: blur(28px);
   z-index: -1;
 }
 
-.hero .brand {
-  font-size: clamp(2rem, 5vw, 3rem);
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.75rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.hero-copy {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.eyebrow,
+.kicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  align-self: start;
+  border: 1px solid var(--line-strong);
+  background: rgba(124, 92, 255, 0.08);
+  border-radius: 999px;
+  padding: 0.5rem 0.95rem;
+  color: var(--accent-soft);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pill-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+.hero h1,
+.section-head h2,
+.band-copy h2 {
+  margin: 0;
+  font-family: var(--font-display), "Segoe UI", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
 }
 
 .hero h1 {
+  font-size: clamp(2rem, 5.4vw, 3.7rem);
+  max-width: 16ch;
+}
+
+.hero-support,
+.section-head p,
+.band-copy p,
+.card p,
+.product p {
   margin: 0;
-  max-width: 14ch;
-  font-family: var(--font-display), "Segoe UI", sans-serif;
-  font-size: clamp(2.4rem, 7vw, 4.6rem);
-  font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .hero-support {
-  margin: 0;
-  max-width: 36ch;
-  color: var(--muted);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  line-height: 1.55;
+  max-width: 38rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
 }
 
-.cta-row {
+.cta-row,
+.hero-notes {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
+  gap: 0.75rem 1.25rem;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.75rem;
-  padding: 0.7rem 1.2rem;
-  border-radius: 0.55rem;
+  min-height: 2.85rem;
+  padding: 0.8rem 1.3rem;
+  border-radius: 0.45rem;
   border: 1px solid transparent;
   font-size: 0.95rem;
-  font-weight: 600;
-  transition: transform 180ms ease, background-color 180ms ease,
-    border-color 180ms ease;
-}
-
-.button:hover {
-  transform: translateY(-1px);
+  font-weight: 700;
 }
 
 .button-primary {
   background: var(--accent);
-  color: #f3faf8;
+  color: #0a0b0d;
 }
 
 .button-secondary {
-  background: transparent;
-  border-color: var(--line);
+  border-color: rgba(255, 255, 255, 0.18);
   color: var(--foreground);
 }
 
-.sections {
+.status-card {
+  border: 1px solid rgba(124, 92, 255, 0.28);
+  border-radius: 0.75rem;
+  background: var(--panel);
+  overflow: hidden;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--faint);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+}
+
+.status-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: #3a3d4a;
+}
+
+.status-body {
   display: grid;
-  gap: 1.5rem;
-  padding: 1rem 0 4rem;
+  gap: 0.55rem;
+  padding: 1.25rem 1.3rem 1.4rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.82rem;
+}
+
+.status-line {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.status-line .ok {
+  color: var(--mint);
+}
+
+.marquee {
+  border-top: 1px solid rgba(124, 92, 255, 0.22);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(13, 14, 21, 0.72);
+  overflow: hidden;
+  padding: 0.9rem 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+  color: var(--faint);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+}
+
+.marquee-group span[aria-hidden="true"] {
+  color: var(--accent);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .section {
-  padding: 2rem 0;
-  border-top: 1px solid var(--line);
+  padding: clamp(3.2rem, 8vw, 5.5rem) 0;
 }
 
-.section h2 {
-  margin: 0 0 0.75rem;
-  font-family: var(--font-display), "Segoe UI", sans-serif;
-  font-size: clamp(1.7rem, 3.6vw, 2.2rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+.section-head {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
 }
 
-.section p {
+.section-head h2,
+.band-copy h2 {
+  font-size: clamp(1.7rem, 4vw, 2.55rem);
+  max-width: 18ch;
+}
+
+.card-grid,
+.mini-grid,
+.process-grid,
+.offer-grid {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.mini-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.process-grid {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.offer-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card,
+.product,
+.form-card {
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  background: var(--surface);
+}
+
+.card,
+.product-body,
+.form-card {
+  padding: 1.4rem 1.35rem;
+}
+
+.card,
+.product {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.card h3,
+.product h3,
+.step h3 {
   margin: 0;
-  max-width: 60ch;
+  font-family: var(--font-display), "Segoe UI", sans-serif;
+  font-size: 1.25rem;
+}
+
+.gaming {
+  background: #0d0e15;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.band {
+  background: #0d0e15;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.band-inner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.band-copy {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.point-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.point-list li {
+  display: flex;
+  gap: 0.75rem;
+  color: var(--muted-strong);
+  line-height: 1.55;
+}
+
+.point-list li::before {
+  content: "✓";
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-weight: 700;
+}
+
+.step {
+  display: grid;
+  gap: 0.7rem;
+  padding-top: 1.1rem;
+  border-top: 2px solid var(--accent);
+}
+
+.step:nth-child(2) {
+  border-top-color: rgba(124, 92, 255, 0.55);
+}
+
+.step:nth-child(3) {
+  border-top-color: rgba(124, 92, 255, 0.35);
+}
+
+.step:nth-child(4) {
+  border-top-color: rgba(124, 92, 255, 0.2);
+}
+
+.step .n {
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.product-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.badge {
+  border: 1px solid rgba(124, 92, 255, 0.4);
+  border-radius: 0.25rem;
+  padding: 0.28rem 0.5rem;
+  color: var(--accent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.75rem, 4vw, 4rem);
+  align-items: start;
+}
+
+.contact-meta {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  color: var(--muted-strong);
+}
+
+.contact-meta a {
+  color: var(--accent-soft);
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.field span {
   color: var(--muted);
-  line-height: 1.65;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: #0a0b0d;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.45rem;
+  padding: 0.8rem 0.85rem;
+  color: var(--foreground);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.check {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.check a {
+  color: var(--accent-soft);
+}
+
+.form-note,
+.form-success {
+  color: var(--faint);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.55;
 }
 
 .site-footer {
-  padding: 1.5rem 0 2.5rem;
-  color: var(--muted);
-  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 2rem 0 2.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--faint);
+  font-size: 0.88rem;
 }
 
 @media (max-width: 720px) {
@@ -208,11 +577,10 @@ a {
 
   .site-header nav ul {
     flex-wrap: wrap;
-    gap: 0.85rem 1rem;
+    gap: 0.75rem 1rem;
   }
 
-  .hero {
-    min-height: calc(100svh - 7.5rem);
-    padding-top: 2rem;
+  .hero h1 {
+    max-width: none;
   }
 }
