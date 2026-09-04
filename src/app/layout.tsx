@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, Syne } from "next/font/google";
 import { siteContent } from "@/content/site";
 import "./globals.css";
@@ -16,6 +16,12 @@ const body = DM_Sans({
 export const metadata: Metadata = {
   title: siteContent.meta.title,
   description: siteContent.meta.description,
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#e8eef2",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
