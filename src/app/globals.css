@@ -217,6 +217,10 @@ h2 {
   color: #0a0b0d;
 }
 
+.nav-mobile-wrap {
+  position: relative;
+}
+
 .nav-toggle {
   display: inline-flex;
   align-items: center;
@@ -228,6 +232,11 @@ h2 {
   background: var(--surface);
   color: var(--foreground);
   cursor: pointer;
+  list-style: none;
+}
+
+.nav-toggle::-webkit-details-marker {
+  display: none;
 }
 
 .nav-toggle-bars,
@@ -260,19 +269,23 @@ h2 {
 }
 
 .nav-mobile {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0.15rem;
-  width: min(1200px, calc(100% - 2rem));
-  margin: 0 auto 0.85rem;
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 5;
+  min-width: min(18rem, calc(100vw - 2rem));
   padding: 0.5rem;
   border: 1px solid var(--line);
   border-radius: 0.85rem;
   background: #101218;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
-.nav-mobile[hidden] {
-  display: none;
+.nav-mobile-wrap[open] .nav-mobile {
+  display: flex;
 }
 
 .nav-mobile a {
@@ -832,7 +845,8 @@ h2 {
   }
 
   .nav-toggle,
-  .nav-mobile {
+  .nav-mobile,
+  .nav-mobile-wrap {
     display: none;
   }
 

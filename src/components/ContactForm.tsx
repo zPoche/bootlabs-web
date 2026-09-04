@@ -46,7 +46,12 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={onSubmit}>
+    <form
+      className="contact-form"
+      action={contact.endpoint}
+      method="post"
+      onSubmit={onSubmit}
+    >
       <div className="form-grid">
         <label>
           <span>Name</span>
