@@ -176,6 +176,7 @@ a {
   gap: 1.25rem;
   padding: 3rem 0 4rem;
   isolation: isolate;
+  overflow-x: clip;
 }
 
 .hero::before {
@@ -323,6 +324,10 @@ a {
   .hero {
     min-height: auto;
     padding: 2rem 0 3rem;
+  }
+
+  .hero::before {
+    inset: -1.5rem 0 auto;
   }
 
   .hero > .brand {
