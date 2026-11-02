@@ -252,7 +252,7 @@ export const siteContent = {
       "Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verarbeitet werden. Details in der",
     privacyLink: "Datenschutzerklärung",
     submit: "Anfrage absenden",
-    note: "Versand über den eigenen Webspace, kein Drittanbieter. Fällt das aus, öffnet sich das Mailprogramm an info@bootlabs.de.",
+    note: "Versand über den eigenen Webspace. Ist der Spam-Schutz auf dem Server eingerichtet, erscheint vor dem Absenden ein Häkchen von Cloudflare. Fällt der Versand aus, öffnet sich das Mailprogramm an info@bootlabs.de.",
   },
   footer: {
     note: "© 2026 Bootlabs · Software & Hardware",
@@ -271,7 +271,7 @@ export const siteContent = {
 export const legal = {
   email: "info@bootlabs.de",
   siteUrl: "https://bootlabs.de",
-  lastUpdated: "2026-09-04",
+  lastUpdated: "2026-11-02",
   provider: {
     name: "",
     street: "",
