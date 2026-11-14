@@ -275,7 +275,8 @@ export const siteContent = {
     kicker: "KONTAKT",
     title: "Schreib uns, was nicht läuft. Oder was gebaut werden soll.",
     body: "Ein paar Sätze reichen. Wir melden uns innerhalb eines Werktags mit einer ersten Einschätzung, kostenlos und unverbindlich.",
-    phoneNote: "Telefon auf Anfrage",
+    phone: "+49 9556 9217717",
+    phoneHref: "+4995569217717",
     successTitle: "Anfrage ist raus.",
     successBody:
       "Wir melden uns innerhalb eines Werktags. Bei etwas Dringendem schreib uns direkt an info@bootlabs.de.",
@@ -308,21 +309,29 @@ export const siteContent = {
 } as const;
 
 /**
- * Nur veröffentlichte Angaben. Fehlende Impressumsfelder bleiben leer
- * und werden nicht gerendert — nichts erfinden.
+ * Anbieterdaten wie bei HomePower+: dieselbe Person, Einzelunternehmen.
+ * Die Handwerkskammer bleibt dort, weil Bootlabs kein Elektrohandwerk ausweist.
  */
 export const legal = {
   email: "info@bootlabs.de",
+  phone: "+49 9556 9217717",
+  phoneHref: "+4995569217717",
   siteUrl: "https://bootlabs.de",
-  lastUpdated: "2026-11-02",
+  brand: "Bootlabs",
+  legalForm: "Einzelunternehmen",
+  lastUpdated: "2026-11-14",
   provider: {
-    name: "",
-    street: "",
-    postalCode: "",
-    city: "",
-    country: "",
+    name: "Johannes Schäfer",
+    street: "Langäcker 15",
+    postalCode: "96160",
+    city: "Geiselwind",
+    country: "Deutschland",
   },
-  vatId: "",
-  register: "",
-  contentResponsible: "",
+  contentResponsible: "Johannes Schäfer",
+  smallBusinessNote:
+    "Kleinunternehmer gemäß § 19 UStG. Es wird keine Umsatzsteuer berechnet; eine Umsatzsteuer-Identifikationsnummer wird nicht ausgewiesen.",
+  dataProtectionAuthority: {
+    name: "Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)",
+    address: "Promenade 18, 91522 Ansbach",
+  },
 } as const;

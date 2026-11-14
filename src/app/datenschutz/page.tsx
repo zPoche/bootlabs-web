@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default function DatenschutzPage() {
+  const provider = legal.provider;
+
   return (
     <div className="site-shell">
       <SiteHeader />
@@ -20,30 +22,77 @@ export default function DatenschutzPage() {
 
           <h2>Verantwortliche Stelle</h2>
           <p>
-            Für die Verarbeitung personenbezogener Daten auf dieser Website ist die unter{" "}
-            <a href="/impressum">Impressum</a> genannte Stelle verantwortlich. Kontakt:{" "}
+            Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne von Art. 4 Nr. 7
+            DSGVO ist:
+          </p>
+          <p>
+            <strong>{provider.name}</strong>
+            <br />
+            {legal.brand}, {legal.legalForm}
+            <br />
+            {provider.street}, {provider.postalCode} {provider.city}
+            <br />
+            E-Mail: <a href={`mailto:${legal.email}`}>{legal.email}</a>
+            <br />
+            Telefon: <a href={`tel:${legal.phoneHref}`}>{legal.phone}</a>
+          </p>
+          <p>
+            Ein Datenschutzbeauftragter ist nicht bestellt, da die Voraussetzungen des § 38 BDSG
+            nicht vorliegen. Für Fragen zum Datenschutz reicht eine Nachricht an{" "}
             <a href={`mailto:${legal.email}`}>{legal.email}</a>.
           </p>
 
           <h2>Hinweise zur Datenverarbeitung</h2>
+          <ul>
+            <li>
+              <strong>Keine Cookies.</strong> Die Seite setzt weder eigene noch fremde Cookies und
+              legt nichts im lokalen Speicher ab. Ein Cookie-Banner ist damit weder nötig noch
+              vorhanden.
+            </li>
+            <li>
+              <strong>Kein Web-Tracking.</strong> Es sind keine Analyse- oder Marketing-Dienste
+              eingebunden, auch keine Pixel oder Social-Plugins.
+            </li>
+            <li>
+              <strong>Schriften lokal.</strong> Schriften werden mit der Seite selbst ausgeliefert,
+              nicht von Google oder einem anderen CDN geladen.
+            </li>
+            <li>
+              <strong>Keine externen Inhalte beim Aufruf.</strong> Beim bloßen Aufruf der Seite wird
+              kein Skript von einem Drittanbieter geladen. Erst wenn du das Kontaktformular benutzt
+              und der Spam-Schutz eingerichtet ist, lädt der Browser Cloudflare Turnstile.
+            </li>
+          </ul>
+
+          <h2>Hosting</h2>
           <p>
-            Diese Website wird ohne Analyse-Cookies und ohne Werbenetzwerke ausgeliefert. Schriften
-            werden mit der Seite selbst ausgeliefert, nicht von Google oder einem anderen CDN
-            geladen. Beim bloßen Aufruf der Seite wird kein Skript von einem Drittanbieter geladen.
-            Erst wenn du das Kontaktformular benutzt und der Spam-Schutz eingerichtet ist, lädt der
-            Browser Cloudflare Turnstile.
+            Diese Website wird bei einem externen Hosting-Dienstleister betrieben. Empfänger der
+            Server-Logdaten ist damit unser Hosting-Anbieter, der die Daten ausschließlich
+            weisungsgebunden für uns verarbeitet.
+          </p>
+          <p>
+            Beim Aufruf der Seiten werden technisch erforderliche Angaben verarbeitet: Browsertyp und
+            Browserversion, Betriebssystem, Referrer-URL, Hostname des zugreifenden Rechners,
+            Uhrzeit der Anfrage und IP-Adresse. Das ist nötig, um die Website auszuliefern und die
+            IT-Sicherheit zu gewährleisten (Art. 6 Abs. 1 lit. f DSGVO). Eine Zusammenführung mit
+            anderen Datenquellen findet nicht statt.
           </p>
 
           <h2>Kontaktformular</h2>
           <p>
             Wenn du das Formular nutzt, verarbeiten wir Name, E-Mail, optional Telefon, Thema und
             Nachricht, um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b
-            DSGVO (vorvertragliche Anfrage) sowie deine Einwilligung nach Art. 6 Abs. 1 lit. a
-            DSGVO. Der Versand erfolgt über den eigenen Webspace, ohne externen Formulardienst.
+            DSGVO, soweit es um einen Vertrag oder eine vorvertragliche Anfrage geht, sonst Art. 6
+            Abs. 1 lit. f DSGVO und deine Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO. Der Versand
+            erfolgt über den eigenen Webspace, ohne externen Formulardienst.
           </p>
           <p>
-            Die Angaben werden nur so lange gespeichert, wie es für die Bearbeitung und gesetzliche
-            Aufbewahrung nötig ist.
+            Die Angaben bleiben gespeichert, bis du Löschung verlangst, eine Einwilligung widerrufst
+            oder der Zweck entfällt. Gesetzliche Aufbewahrungsfristen bleiben unberührt.
+          </p>
+          <p>
+            Schreibst du uns per E-Mail oder rufst an, gelten für die Anfrage dieselben
+            Rechtsgrundlagen und Löschfristen.
           </p>
 
           <h2>Spam-Schutz</h2>
@@ -56,8 +105,7 @@ export default function DatenschutzPage() {
           </p>
           <p>
             Anbieter ist die Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, USA.
-            Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO: unser berechtigtes Interesse, das
-            Formular vor Spam zu schützen. Weitere Informationen stehen in der{" "}
+            Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Weitere Informationen stehen in der{" "}
             <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer">
               Datenschutzerklärung von Cloudflare
             </a>
@@ -65,18 +113,34 @@ export default function DatenschutzPage() {
             (Art. 28 DSGVO).
           </p>
 
-          <h2>Hosting</h2>
+          <h2>Deine Rechte</h2>
+          <p>Du hast uns gegenüber jederzeit das Recht auf:</p>
+          <ul>
+            <li>Auskunft über die zu deiner Person gespeicherten Daten (Art. 15 DSGVO)</li>
+            <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
+            <li>Löschung deiner Daten (Art. 17 DSGVO)</li>
+            <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+            <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+            <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+            <li>Widerruf einer erteilten Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
+          </ul>
           <p>
-            Beim Aufruf der Seiten werden technisch erforderliche Server-Logdaten verarbeitet
-            (IP-Adresse, Zeitpunkt, aufgerufene Datei, User-Agent). Das ist nötig, um die Website
-            auszuliefern und die IT-Sicherheit zu gewährleisten (Art. 6 Abs. 1 lit. f DSGVO).
+            Eine Nachricht an <a href={`mailto:${legal.email}`}>{legal.email}</a> genügt.
+            Soweit wir Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO verarbeiten, kannst du aus
+            Gründen, die sich aus deiner besonderen Situation ergeben, jederzeit Widerspruch
+            einlegen.
           </p>
 
-          <h2>Deine Rechte</h2>
+          <h2>Beschwerde bei der Aufsichtsbehörde</h2>
           <p>
-            Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung,
-            Datenübertragbarkeit und Widerspruch. Einwilligungen kannst du jederzeit widerrufen.
-            Außerdem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde.
+            Du hast ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde, insbesondere in dem
+            Mitgliedstaat deines Aufenthaltsorts, deines Arbeitsplatzes oder des Orts des
+            mutmaßlichen Verstoßes (Art. 77 DSGVO). Für uns zuständig ist:
+          </p>
+          <p>
+            {legal.dataProtectionAuthority.name}
+            <br />
+            {legal.dataProtectionAuthority.address}
           </p>
         </div>
       </main>

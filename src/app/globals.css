@@ -837,6 +837,18 @@ h2 {
   font-size: 1.35rem;
 }
 
+.legal-page ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.legal-page strong {
+  color: var(--foreground);
+  font-weight: 700;
+}
+
 .legal-page p {
   color: var(--muted);
   max-width: 62ch;
