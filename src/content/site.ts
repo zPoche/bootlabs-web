@@ -291,11 +291,12 @@ export const siteContent = {
       "Software nach Maß",
       "Etwas anderes",
     ],
-    privacyLabel:
-      "Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verarbeitet werden. Details in der",
+    privacyBefore: "Ich habe die",
     privacyLink: "Datenschutzerklärung",
-    submit: "Anfrage absenden",
-    note: "Versand über den eigenen Webspace. Ist der Spam-Schutz auf dem Server eingerichtet, erscheint vor dem Absenden ein Häkchen von Cloudflare. Fällt der Versand aus, öffnet sich das Mailprogramm an info@bootlabs.de.",
+    privacyAfter:
+      "gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung der Anfrage zu.",
+    submit: "Nachricht senden",
+    note: "Pflichtfelder sind mit * markiert. Deine Angaben nutzen wir ausschließlich zur Beantwortung der Anfrage.",
   },
   footer: {
     note: "© 2026 Bootlabs · Software, Hardware & Gaming",
