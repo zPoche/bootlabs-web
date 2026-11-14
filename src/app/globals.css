@@ -759,14 +759,6 @@ h2 {
   opacity: 0;
 }
 
-.form-note,
-.legal-note,
-.turnstile-note {
-  margin: 0;
-  color: var(--dim);
-  font-size: 0.85rem;
-}
-
 .turnstile-slot {
   display: grid;
   gap: 0.45rem;

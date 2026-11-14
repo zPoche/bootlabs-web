@@ -296,7 +296,6 @@ export const siteContent = {
       "Ich bin damit einverstanden, dass meine Angaben zur Bearbeitung der Anfrage verarbeitet werden. Details in der",
     privacyLink: "Datenschutzerklärung",
     submit: "Anfrage absenden",
-    note: "Versand über den eigenen Webspace. Ist der Spam-Schutz auf dem Server eingerichtet, erscheint vor dem Absenden ein Häkchen von Cloudflare. Fällt der Versand aus, öffnet sich das Mailprogramm an info@bootlabs.de.",
   },
   footer: {
     note: "© 2026 Bootlabs · Software, Hardware & Gaming",
