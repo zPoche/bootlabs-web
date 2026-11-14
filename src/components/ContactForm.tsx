@@ -244,28 +244,6 @@ export function ContactForm() {
       onFocus={onFormIntent}
       onPointerEnter={onFormIntent}
     >
-      <div className="form-grid">
-        <label>
-          <span>Name</span>
-          <input type="text" name="name" required maxLength={120} placeholder="Vor- und Nachname" />
-        </label>
-        <label>
-          <span>E-Mail</span>
-          <input
-            type="email"
-            name="email"
-            required
-            maxLength={190}
-            placeholder="name@beispiel.de"
-          />
-        </label>
-      </div>
-      <label>
-        <span>
-          Telefon <em>(optional)</em>
-        </span>
-        <input type="tel" name="phone" maxLength={60} placeholder="Für Rückfragen" />
-      </label>
       <input
         className="honeypot"
         type="text"
@@ -274,16 +252,59 @@ export function ContactForm() {
         autoComplete="off"
         aria-hidden="true"
       />
-      <label>
-        <span>Worum geht es</span>
-        <select name="topic" defaultValue={contact.topics[0]}>
-          {contact.topics.map((topic) => (
-            <option key={topic}>{topic}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        <span>Beschreibung</span>
+      <div className="form-grid">
+        <label className="field">
+          <span className="field-label">
+            Name <span className="req">*</span>
+          </span>
+          <input
+            type="text"
+            name="name"
+            required
+            autoComplete="name"
+            maxLength={120}
+            placeholder="Vor- und Nachname"
+          />
+        </label>
+        <label className="field">
+          <span className="field-label">
+            E-Mail <span className="req">*</span>
+          </span>
+          <input
+            type="email"
+            name="email"
+            required
+            autoComplete="email"
+            maxLength={190}
+            placeholder="name@beispiel.de"
+          />
+        </label>
+        <label className="field">
+          <span className="field-label">Telefon</span>
+          <input
+            type="tel"
+            name="phone"
+            autoComplete="tel"
+            maxLength={60}
+            placeholder="Optional"
+          />
+        </label>
+        <label className="field">
+          <span className="field-label">Thema</span>
+          <select name="topic" defaultValue="">
+            <option value="">Bitte wählen</option>
+            {contact.topics.map((topic) => (
+              <option key={topic} value={topic}>
+                {topic}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      <label className="field">
+        <span className="field-label">
+          Nachricht <span className="req">*</span>
+        </span>
         <textarea
           name="message"
           rows={5}
@@ -295,8 +316,8 @@ export function ContactForm() {
       <label className="form-check">
         <input type="checkbox" name="privacy" required />
         <span>
-          {contact.privacyLabel}{" "}
-          <a href="/datenschutz">{contact.privacyLink}</a>.
+          {contact.privacyBefore} <a href="/datenschutz">{contact.privacyLink}</a>{" "}
+          {contact.privacyAfter} <span className="req">*</span>
         </span>
       </label>
       <div className="turnstile-slot" hidden={!sitekey}>
@@ -311,8 +332,13 @@ export function ContactForm() {
           {status.message}
         </p>
       ) : null}
-      <button className="button button-primary" type="submit" disabled={pending}>
+      <button className="button button-primary form-submit" type="submit" disabled={pending}>
         {pending ? "Wird gesendet …" : contact.submit}
+        {pending ? null : (
+          <span className="form-submit-arrow" aria-hidden="true">
+            →
+          </span>
+        )}
       </button>
       <p className="form-note">{contact.note}</p>
     </form>
