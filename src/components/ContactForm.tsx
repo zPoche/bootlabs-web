@@ -301,10 +301,6 @@ export function ContactForm() {
       </label>
       <div className="turnstile-slot" hidden={!sitekey}>
         <div ref={hostRef} className="turnstile-host" />
-        <p className="turnstile-note">
-          Bitte setze das Häkchen. Die Prüfung läuft über Cloudflare und startet erst, wenn du
-          dieses Formular benutzt.
-        </p>
       </div>
       {status ? (
         <p className="form-status" data-tone={status.tone} role="status">
@@ -314,7 +310,6 @@ export function ContactForm() {
       <button className="button button-primary" type="submit" disabled={pending}>
         {pending ? "Wird gesendet …" : contact.submit}
       </button>
-      <p className="form-note">{contact.note}</p>
     </form>
   );
 }

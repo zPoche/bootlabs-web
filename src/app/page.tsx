@@ -193,7 +193,7 @@ export default function Home() {
               <p className="lede">{contact.body}</p>
               <p className="contact-meta">
                 <a href={`mailto:${email}`}>{email}</a>
-                <span>{contact.phoneNote}</span>
+                <a href={`tel:${contact.phoneHref}`}>{contact.phone}</a>
               </p>
             </div>
             <ContactForm />
