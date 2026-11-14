@@ -510,6 +510,14 @@ h2 {
   border-bottom: 1px solid var(--line);
 }
 
+.section-gaming {
+  background: #0d0e15;
+}
+
+.section-gaming .service-card h3 {
+  margin-top: 0;
+}
+
 .service-grid,
 .process-grid,
 .product-featured,
@@ -635,6 +643,10 @@ h2 {
 .product-card {
   display: grid;
   gap: 1rem;
+}
+
+.product-compact .product-head h3 {
+  margin-top: 0;
 }
 
 .trust {

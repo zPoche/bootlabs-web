@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-type IconName = "pc" | "phone" | "wifi" | "server" | "shield" | "code";
+type IconName = "pc" | "phone" | "wifi" | "server" | "shield" | "code" | "game";
 
 const paths: Record<IconName, ReactNode> = {
   pc: (
@@ -42,6 +42,15 @@ const paths: Record<IconName, ReactNode> = {
       <path d="M4 7 H20" />
       <path d="M4 12 H14" />
       <path d="M4 17 H17" />
+    </>
+  ),
+  game: (
+    <>
+      <path d="M7 9 H17 A3 3 0 0 1 20 12 V14.5 A2.5 2.5 0 0 1 17.5 17 H15 L13 15 H11 L9 17 H6.5 A2.5 2.5 0 0 1 4 14.5 V12 A3 3 0 0 1 7 9 Z" />
+      <path d="M8 12 V15" />
+      <path d="M6.5 13.5 H9.5" />
+      <circle cx="15.5" cy="12.5" r="0.7" fill="currentColor" stroke="none" />
+      <circle cx="17.5" cy="14.5" r="0.7" fill="currentColor" stroke="none" />
     </>
   ),
 };

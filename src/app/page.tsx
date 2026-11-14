@@ -7,8 +7,18 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { siteContent } from "@/content/site";
 
 export default function Home() {
-  const { services, private: privat, business, process, products, trust, contact, ticker, email } =
-    siteContent;
+  const {
+    services,
+    gaming,
+    private: privat,
+    business,
+    process,
+    products,
+    trust,
+    contact,
+    ticker,
+    email,
+  } = siteContent;
 
   return (
     <div className="site-shell">
@@ -35,6 +45,22 @@ export default function Home() {
               {services.items.map((item) => (
                 <article key={item.title} className="service-card">
                   <ServiceIcon name={item.icon} />
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section section-gaming" id={gaming.id} aria-labelledby="gaming-heading">
+          <div className="wrap">
+            <p className="kicker">{gaming.kicker}</p>
+            <h2 id="gaming-heading">{gaming.title}</h2>
+            <p className="lede">{gaming.body}</p>
+            <div className="service-grid">
+              {gaming.items.map((item) => (
+                <article key={item.title} className="service-card">
                   <h3>{item.title}</h3>
                   <p>{item.body}</p>
                 </article>
@@ -137,7 +163,10 @@ export default function Home() {
             <div className="product-compact">
               {products.compact.map((item) => (
                 <article key={item.title}>
-                  <h3>{item.title}</h3>
+                  <div className="product-head">
+                    <h3>{item.title}</h3>
+                    {"badge" in item && item.badge ? <span>{item.badge}</span> : null}
+                  </div>
                   <p>{item.body}</p>
                 </article>
               ))}

@@ -15,14 +15,15 @@ export const siteContent = {
     markRight: "LABS",
   },
   meta: {
-    title: "Bootlabs · Software & Hardware",
+    title: "Bootlabs · Software, Hardware & Gaming",
     description:
-      "Reparatur, Aufrüstung, Netzwerk und laufende Betreuung — für Privatleute und Betriebe. Dazu Software, die wir selbst bauen, wenn es von der Stange nichts Passendes gibt.",
+      "Reparatur, Gaming-PCs, Netzwerk und laufende Betreuung — für Privatleute und Betriebe. Dazu Software und kleine Spiele, die wir selbst bauen.",
   },
   url: "https://bootlabs.de",
   email: "info@bootlabs.de",
   nav: [
     { label: "Leistungen", href: "/#leistungen" },
+    { label: "Gaming", href: "/#gaming" },
     { label: "Ablauf", href: "/#ablauf" },
     { label: "Eigenentwicklungen", href: "/#tools" },
   ] satisfies NavLink[],
@@ -40,7 +41,7 @@ export const siteContent = {
     ],
     line2: "Und jemand, der rangeht.",
     support:
-      "Reparatur, Aufrüstung, Netzwerk und laufende Betreuung, für Privatleute genauso wie für Betriebe. Dazu Software, die wir selbst bauen, wenn es von der Stange nichts Passendes gibt.",
+      "Reparatur, Gaming-PCs, Netzwerk und laufende Betreuung, für Privatleute genauso wie für Betriebe. Dazu Software und kleine Spiele, die wir selbst bauen, wenn es von der Stange nichts Passendes gibt.",
     primaryCta: {
       label: "Kostenlose Einschätzung",
       href: "/#kontakt",
@@ -59,9 +60,11 @@ export const siteContent = {
       command: "bootlabs status",
       rows: [
         { label: "reparatur", value: "verfügbar" },
+        { label: "gaming-pcs", value: "verfügbar" },
         { label: "netzwerk & wlan", value: "verfügbar" },
         { label: "it-betreuung", value: "verfügbar" },
         { label: "eigene software", value: "auf anfrage" },
+        { label: "kleine spiele", value: "labs" },
       ],
       loadLabel: "auslastung diese woche",
       loadHint: "reaktion < 1 werktag",
@@ -69,6 +72,8 @@ export const siteContent = {
   },
   ticker: [
     "PC & NOTEBOOK",
+    "GAMING-PCS",
+    "SPIELEENTWICKLUNG",
     "DISPLAY & AKKU",
     "SSD-AUFRÜSTUNG",
     "DATENRETTUNG",
@@ -82,12 +87,17 @@ export const siteContent = {
   services: {
     id: "leistungen",
     kicker: "LEISTUNGEN",
-    title: "Vom kaputten Display bis zum Serverschrank.",
+    title: "Vom kaputten Display bis zum Gaming-Rig.",
     items: [
       {
         title: "PC & Notebook",
         body: "Reparatur, Reinigung, SSD- und RAM-Aufrüstung, Datenrettung, Windows neu aufsetzen ohne Datenverlust.",
         icon: "pc",
+      },
+      {
+        title: "Gaming-PCs",
+        body: "Konfiguriert, gebaut und getestet: Grafikkarte, Kühlung und Gehäuse nach Budget und Titel. Festpreis vorher, Übergabe mit kurzer Einweisung.",
+        icon: "game",
       },
       {
         title: "Handy & Tablet",
@@ -114,16 +124,42 @@ export const siteContent = {
         body: "Wenn Standardsoftware nicht passt, entwickeln wir selbst: Weboberflächen, Apps, Schnittstellen.",
         icon: "code",
       },
+      {
+        title: "Kleine Spiele",
+        body: "Eigene Prototypen und kurze Indie-Games. Kein AAA-Studio, sondern Sachen, die wir selbst bauen und die du spielen kannst.",
+        icon: "game",
+      },
+    ],
+  },
+  gaming: {
+    id: "gaming",
+    kicker: "GAMING",
+    title: "PCs zum Spielen. Spiele zum Ausprobieren.",
+    body: "Wir verkaufen keine Fertigkisten von der Stange. Gaming-PCs bauen wir selbst, kleine Spiele ebenfalls. Beides mit dem Anspruch, dass es danach einfach läuft.",
+    items: [
+      {
+        title: "Custom Gaming-PCs",
+        body: "Du sagst Budget, Auflösung und welche Titel du spielst. Wir legen die Teile fest, bauen das System, spielen es einmal durch und übergeben es mit Festpreis.",
+      },
+      {
+        title: "Aufrüsten statt neu kaufen",
+        body: "Alte Kiste, neue Grafikkarte, bessere Kühlung, stilleres Netzteil. Wenn sich ein Upgrade lohnt, machen wir das, bevor jemand einen kompletten Rechner ersetzt.",
+      },
+      {
+        title: "Kleine Spiele & Prototypen",
+        body: "Kurze Games, Game-Jam-Ideen und Auftragsarbeiten für kleine Spielprojekte. Wir bleiben bewusst klein: spielbar, fertig, ohne 80-Stunden-Kampagne.",
+      },
     ],
   },
   private: {
     kicker: "FÜR PRIVAT",
     title: "Erst gucken, dann Preis, dann reparieren.",
-    body: "Du bekommst nach der Diagnose einen festen Preis und eine ehrliche Aussage, ob sich die Reparatur noch lohnt. Kein Fachchinesisch, keine Überraschung auf der Rechnung.",
+    body: "Du bekommst nach der Diagnose einen festen Preis und eine ehrliche Aussage, ob sich Reparatur, Aufrüsten oder ein neuer Gaming-PC lohnt. Kein Fachchinesisch, keine Überraschung auf der Rechnung.",
     points: [
-      "Diagnose kostenlos, Kostenvoranschlag vor jeder Reparatur",
+      "Diagnose kostenlos, Kostenvoranschlag vor jeder Arbeit",
+      "Gaming-PCs nach Budget und den Spielen, die du wirklich startest",
       "Daten bleiben bei dir, nichts wandert in eine Cloud",
-      "Reparieren statt ersetzen, wenn es sich rechnet",
+      "Reparieren oder aufrüsten, wenn es sich rechnet",
     ],
     image: {
       src: "/images/privat.png",
@@ -157,7 +193,7 @@ export const siteContent = {
       {
         num: "02",
         title: "Diagnose",
-        body: "Wir prüfen vor Ort oder per Fernzugriff und sagen dir, was tatsächlich kaputt ist.",
+        body: "Wir prüfen vor Ort, per Fernzugriff oder als Konfiguration und sagen dir, was wirklich nötig ist.",
       },
       {
         num: "03",
@@ -167,15 +203,15 @@ export const siteContent = {
       {
         num: "04",
         title: "Umsetzung",
-        body: "Reparatur, Einrichtung oder Entwicklung, inklusive kurzer Übergabe, was gemacht wurde.",
+        body: "Reparatur, Gaming-PC, Einrichtung oder Entwicklung, inklusive kurzer Übergabe, was gemacht wurde.",
       },
     ],
   },
   products: {
     id: "tools",
     kicker: "EIGENENTWICKLUNGEN",
-    title: "Software, die aus echten Baustellen entstanden ist.",
-    body: "Nicht am Reißbrett gedacht, sondern gebaut, weil ein Betrieb es gebraucht hat. Alles läuft auf Servern in Deutschland.",
+    title: "Software aus echten Baustellen. Spiele aus dem Labs.",
+    body: "Nicht am Reißbrett gedacht, sondern gebaut, weil ein Betrieb oder wir selbst es gebraucht haben. Die Business-Tools laufen auf Servern in Deutschland. Kleine Spiele bleiben bewusst klein.",
     featured: [
       {
         title: "Volt ERP",
@@ -209,6 +245,11 @@ export const siteContent = {
         title: "Kranprüfung",
         body: "Digitales Prüfprotokoll statt Papier: ausfüllen, dokumentieren, archivieren.",
       },
+      {
+        title: "Kleine Spiele",
+        badge: "LABS",
+        body: "Eigene Prototypen und kurze Indie-Ideen. Kein AAA, sondern Sachen, die wir selbst spielen wollen, und auf Anfrage auch für andere bauen.",
+      },
     ],
   },
   trust: [
@@ -232,7 +273,7 @@ export const siteContent = {
   contact: {
     id: "kontakt",
     kicker: "KONTAKT",
-    title: "Schreib uns, was nicht läuft.",
+    title: "Schreib uns, was nicht läuft. Oder was gebaut werden soll.",
     body: "Ein paar Sätze reichen. Wir melden uns innerhalb eines Werktags mit einer ersten Einschätzung, kostenlos und unverbindlich.",
     phoneNote: "Telefon auf Anfrage",
     successTitle: "Anfrage ist raus.",
@@ -241,6 +282,8 @@ export const siteContent = {
     endpoint: "/api/contact.php",
     topics: [
       "PC oder Notebook",
+      "Gaming-PC konfigurieren",
+      "Kleines Spiel / Game",
       "Handy oder Tablet",
       "Netzwerk und WLAN",
       "Server und Backup",
@@ -255,7 +298,7 @@ export const siteContent = {
     note: "Versand über den eigenen Webspace. Ist der Spam-Schutz auf dem Server eingerichtet, erscheint vor dem Absenden ein Häkchen von Cloudflare. Fällt der Versand aus, öffnet sich das Mailprogramm an info@bootlabs.de.",
   },
   footer: {
-    note: "© 2026 Bootlabs · Software & Hardware",
+    note: "© 2026 Bootlabs · Software, Hardware & Gaming",
     links: [
       { label: "Kontakt", href: "/#kontakt" },
       { label: "Impressum", href: "/impressum" },
